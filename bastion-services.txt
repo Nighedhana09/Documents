@@ -1,0 +1,37 @@
+Azure bastion ----- acts as a protection(layer) services
+
+1. It is fully managed paas inside your VN
+2. Provides secured and seamless rdp/ssh connection to VM's
+---- open the VM through public browser instead of direct rdp/ssh connection
+3. eliminates the need of Pubic ip address
+
+
+4. Create subnet for bastion service with the name AzureBastionSubnet
+5. we can access VM in the browser using Bastion service
+
+Note :
+
+1. Other than bastion service, no resource can be deployed in AzureBastionSubnet
+2. To remove public ip dissociate from virtual machine.
+3. To use same bastion service for multiple VM, try peering.
+
+Steps to create bastion service
+
+1. Create resource-group
+2. create Virtual network
+3. Create subnet with the name AzureBastionSubnet
+4. serach for bastion and create new bastion
+5. select the required info (rg,vnet,sub-net)
+6. select create new public-ip (if we have multiple VM's, bastion creates Public-ip to connect with target machine) 
+7. review and create
+8. create Virtual machine (choose password method and select all the in`bound ports http,https,ssh)
+9. review and create
+10.Go to VM and click on "connect"
+11. Select "Bastion" and Provide the username and password
+12. click on "connect"
+
+
+Drawbacks
+1. Costly
+2. takes atleast 5-20 mins to deploy
+(beacuse it scans our virtual network)
